@@ -1,5 +1,7 @@
 package problem;
 
+import problem.Figures.Figures;
+
 import javax.media.opengl.GL2;
 import java.io.*;
 import java.util.ArrayList;
@@ -131,8 +133,12 @@ public class Problem {
      * @param gl переменная OpenGL для рисования
      */
     public void render(GL2 gl) {
-        for (Point point : points) {
-            point.render(gl);
-        }
+//        for (Point point : points) {
+//            point.render(gl);
+//        }
+        // Figures.renderLine(gl,0.1,0.2,-0.1,0.6,5);
+        //Figures.renderPoint(gl,0.3,0.2,4);
+        //Figures.renderPoint(gl,-0.1,0.2,3);
+        Figures.renderTriangle(gl, 0.1, 0.2, 0.3, 0.2, -0.1, 0.2, true);
     }
 }
