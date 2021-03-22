@@ -51,7 +51,8 @@ public class Figures {
             gl.glVertex2d(x2, y2);
             gl.glVertex2d(x3, y3);
             gl.glVertex2d(x4, y4);
-
+            gl.glVertex2d(x3, y3);
+            gl.glVertex2d(x1, y1);
             gl.glEnd();
         } else {
 
@@ -68,13 +69,17 @@ public class Figures {
 
     public static void renderCircle(GL2 gl, double centerx, double centery, double rad, boolean filled) {
         if (filled) {
-            gl.glBegin(GL.GL_TRIANGLES);
-
-            gl.glEnd();
+            gl.glBegin(GL.GL_TRIANGLE_FAN);
+            gl.glVertex2d(centerx, centery);
         } else {
             gl.glBegin(GL.GL_LINE_STRIP);
-
-            gl.glEnd();
         }
+        for (int i = 0; i<=40; i++) {
+            double angle = 2*i*Math.PI/40;
+            double x = rad*Math.cos(angle);
+            double y = rad*Math.sin(angle);
+            gl.glVertex2d(x+centerx, y+centery);
+        }
+        gl.glEnd();
     }
 }

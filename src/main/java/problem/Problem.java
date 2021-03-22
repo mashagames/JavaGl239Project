@@ -136,9 +136,12 @@ public class Problem {
 //        for (Point point : points) {
 //            point.render(gl);
 //        }
-        // Figures.renderLine(gl,0.1,0.2,-0.1,0.6,5);
+//         Figures.renderQuads(gl,0.1,0.2,0.2,0.1,0.1, 0.1,0.2,0.2,true);
+//        Figures.renderLine(gl,0.1,0.2,-0.1,0.6,5);
         //Figures.renderPoint(gl,0.3,0.2,4);
         //Figures.renderPoint(gl,-0.1,0.2,3);
-        Figures.renderTriangle(gl, 0.1, 0.2, 0.3, 0.2, -0.1, 0.2, true);
+        //Figures.renderTriangle(gl, 0.1, 0.2, 0.3, 0.2, -0.1, 0.2, true);
+        Figures.renderCircle(gl, 0.2, 0, 0.2, false
+       );
     }
 }
