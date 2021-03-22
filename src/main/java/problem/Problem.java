@@ -21,7 +21,7 @@ public class Problem {
     /**
      * заголовок окна
      */
-    public static final String PROBLEM_CAPTION = "Итоговый проект ученика 10-7 Иванова Ивана";
+    public static final String PROBLEM_CAPTION = "Итоговый проект ученицы 10-7 Кучиной Марии";
 
     /**
      * путь к файлу
