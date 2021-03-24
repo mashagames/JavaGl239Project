@@ -1,15 +1,18 @@
 package problem;
 
 import problem.Figures.Figures;
+import problem.Figures.Angle;
 
 import javax.media.opengl.GL2;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  * Класс задачи
  */
+
 public class Problem {
     /**
      * текст задачи
@@ -32,12 +35,19 @@ public class Problem {
      * список точек
      */
     private ArrayList<Point> points;
+    private ArrayList<Angle> angles;
 
     /**
      * Конструктор класса задачи
      */
     public Problem() {
         points = new ArrayList<>();
+        angles = new ArrayList<>();
+        Angle angle = new Angle();
+        angles.add(angle);
+        angle = new Angle();
+        angles.add(angle);
+
     }
 
     /**
@@ -50,6 +60,10 @@ public class Problem {
     public void addPoint(double x, double y, int setVal) {
         Point point = new Point(x, y, setVal);
         points.add(point);
+    }
+    public void addAngle(double centerx, double centery, double alpha1, double alpha2) {
+        Angle angle = new Angle(centerx, centery, alpha1, alpha2);
+        angles.add(angle);
     }
 
     /**
@@ -117,6 +131,8 @@ public class Problem {
         for (int i = 0; i < n; i++) {
             Point p = Point.getRandomPoint();
             points.add(p);
+            Angle a = new Angle();
+            angles.add(a);
         }
     }
 
@@ -136,12 +152,15 @@ public class Problem {
 //        for (Point point : points) {
 //            point.render(gl);
 //        }
-//         Figures.renderQuads(gl,0.1,0.2,0.2,0.1,0.1, 0.1,0.2,0.2,true);
+        Figures.renderQuads(gl,-1,1,1,-1,-1, -1,1,1,true);
 //        Figures.renderLine(gl,0.1,0.2,-0.1,0.6,5);
         //Figures.renderPoint(gl,0.3,0.2,4);
         //Figures.renderPoint(gl,-0.1,0.2,3);
         //Figures.renderTriangle(gl, 0.1, 0.2, 0.3, 0.2, -0.1, 0.2, true);
-        Figures.renderCircle(gl, 0.2, 0, 0.2, false
-       );
+
+        for (int i=0;i<angles.size()-1;i++) {
+            Figures.renderAngle(gl, angles.get(i));
+        }
+//        Figures.renderCircle(gl, 0.2, 0, 0.2, false);
     }
 }

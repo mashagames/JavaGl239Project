@@ -3,6 +3,7 @@ package problem.Figures;
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GL2GL3;
+import problem.Figures.Angle;
 
 public class Figures {
 
@@ -75,11 +76,24 @@ public class Figures {
             gl.glBegin(GL.GL_LINE_STRIP);
         }
         for (int i = 0; i<=40; i++) {
-            double angle = 2*i*Math.PI/40;
-            double x = rad*Math.cos(angle);
-            double y = rad*Math.sin(angle);
+            double alpha = 2*i*Math.PI/40;
+            double x = rad*Math.cos(alpha);
+            double y = rad*Math.sin(alpha);
             gl.glVertex2d(x+centerx, y+centery);
         }
         gl.glEnd();
     }
-}
+
+    public static void renderAngle(GL2 gl, Angle angle) {
+            gl.glBegin(GL.GL_LINE_STRIP);
+
+            double x1 = angle.centerx+0.05*Math.cos(angle.alpha1);
+            double y1 = angle.centery+0.05*Math.sin(angle.alpha1);
+            gl.glVertex2d(x1, y1);
+            gl.glVertex2d(angle.centerx, angle.centery);
+            x1 = angle.centerx+0.05*Math.cos(angle.alpha2);
+            y1 = angle.centery+0.05*Math.sin(angle.alpha2);
+            gl.glVertex2d(x1, y1);
+            gl.glEnd();
+        }
+    }
