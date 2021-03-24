@@ -4,23 +4,24 @@ import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GL2GL3;
 import problem.Figures.Angle;
+import problem.Vector2;
 
 public class Figures {
 
-    public static void renderPoint(GL2 gl, double x, double y, float size) {
+    public static void renderPoint(GL2 gl, Vector2 pos, float size) {
         gl.glPointSize(size);
         gl.glBegin(GL.GL_POINTS);
 
-        gl.glVertex2d(x, y);
+        gl.glVertex2d(pos.x, pos.y);
         gl.glEnd();
     }
 
-    public static void renderLine(GL2 gl, double x1, double x2, double y1, double y2, float width) {
+    public static void renderLine(GL2 gl, Vector2 posA, Vector2 posB, float width) {
         gl.glLineWidth(width);
         gl.glBegin(GL.GL_LINES);
 
-        gl.glVertex2d(x1, y1);
-        gl.glVertex2d(x2, y2);
+        gl.glVertex2d(posA.x, posA.y);
+        gl.glVertex2d(posB.x, posB.y);
         gl.glEnd();
     }
 

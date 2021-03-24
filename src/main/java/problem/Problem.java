@@ -57,10 +57,7 @@ public class Problem {
      * @param y      координата Y точки
      * @param setVal номер множества
      */
-    public void addPoint(double x, double y, int setVal) {
-        Point point = new Point(x, y, setVal);
-        points.add(point);
-    }
+
     public void addAngle(double centerx, double centery, double alpha1, double alpha2) {
         Angle angle = new Angle(centerx, centery, alpha1, alpha2);
         angles.add(angle);
@@ -89,18 +86,19 @@ public class Problem {
      * Загрузить задачу из файла
      */
     public void loadFromFile() {
-        points.clear();
+        angles.clear();
         try {
             File file = new File(FILE_NAME);
             Scanner sc = new Scanner(file);
             // пока в файле есть непрочитанные строки
             while (sc.hasNextLine()) {
-                double x = sc.nextDouble();
-                double y = sc.nextDouble();
-                int setVal = sc.nextInt();
+                double centerx = sc.nextDouble();
+                double centery = sc.nextDouble();
+                double alpha1 = sc.nextDouble();
+                double alpha2 = sc.nextDouble();
                 sc.nextLine();
-                Point point = new Point(x, y, setVal);
-                points.add(point);
+                Angle angle = new Angle(centerx, centery, alpha1, alpha2);
+                angles.add(angle);
             }
         } catch (Exception ex) {
             System.out.println("Ошибка чтения из файла: " + ex);
@@ -113,8 +111,8 @@ public class Problem {
     public void saveToFile() {
         try {
             PrintWriter out = new PrintWriter(new FileWriter(FILE_NAME));
-            for (Point point : points) {
-                out.printf("%.2f %.2f %d\n", point.x, point.y, point.setNumber);
+            for (Angle angle : angles) {
+                out.printf("%.2f %.2f %.2f %.2f\n", angle.centerx, angle.centery, angle.alpha1, angle.alpha2);
             }
             out.close();
         } catch (IOException ex) {
@@ -129,8 +127,6 @@ public class Problem {
      */
     public void addRandomPoints(int n) {
         for (int i = 0; i < n; i++) {
-            Point p = Point.getRandomPoint();
-            points.add(p);
             Angle a = new Angle();
             angles.add(a);
         }
@@ -140,7 +136,7 @@ public class Problem {
      * Очистить задачу
      */
     public void clear() {
-        points.clear();
+        angles.clear();
     }
 
     /**
@@ -152,13 +148,14 @@ public class Problem {
 //        for (Point point : points) {
 //            point.render(gl);
 //        }
-        Figures.renderQuads(gl,-1,1,1,-1,-1, -1,1,1,true);
-//        Figures.renderLine(gl,0.1,0.2,-0.1,0.6,5);
+//        Figures.renderQuads(gl,-1,1,1,-1,-1, -1,1,1,false);
+        Vector2 posA = new Vector2(0.1, 0.2), posB = new Vector2(-0.1, 0.6);
+        Figures.renderLine(gl, posA, posB,5);
         //Figures.renderPoint(gl,0.3,0.2,4);
         //Figures.renderPoint(gl,-0.1,0.2,3);
         //Figures.renderTriangle(gl, 0.1, 0.2, 0.3, 0.2, -0.1, 0.2, true);
 
-        for (int i=0;i<angles.size()-1;i++) {
+        for (int i=0;i<angles.size();i++) {
             Figures.renderAngle(gl, angles.get(i));
         }
 //        Figures.renderCircle(gl, 0.2, 0, 0.2, false);

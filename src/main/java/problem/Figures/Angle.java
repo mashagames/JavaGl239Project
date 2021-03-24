@@ -5,8 +5,8 @@ package problem.Figures;
  */
 
 public class Angle {
-    double centerx, centery;
-    double alpha1, alpha2;
+    public double centerx, centery;
+    public double alpha1, alpha2;
     public Angle() {
         centerx = Math.random()*2-1;
         centery = Math.random()*2-1;

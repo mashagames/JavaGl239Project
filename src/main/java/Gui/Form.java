@@ -1,6 +1,5 @@
 package Gui;
 
-import problem.Point;
 import problem.Problem;
 
 import javax.swing.*;
@@ -25,7 +24,9 @@ public class Form extends JFrame {
     private JButton clearBtn;
     private JButton solveBtn;
     private JLabel problemText;
-    private JButton addPoint;
+    private JButton addAngle;
+    private JTextField alpha1Field;
+    private JTextField alpha2Field;
     private JRadioButton radioButton1;
     private JRadioButton radioButton2;
     /**
@@ -81,17 +82,15 @@ public class Form extends JFrame {
     private void initWidgets() {
         // задаём текст полю описания задачи
         problemText.setText("<html>" + Problem.PROBLEM_TEXT.replaceAll("\n", "<br>"));
-        // делаем первое радио выбранным
-        radioButton1.setSelected(true);
-        radioButton2.setSelected(false);
 
-        addPoint.addActionListener(new ActionListener() {
+        addAngle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double x = Double.parseDouble(xPointField.getText());
-                double y = Double.parseDouble(yPointField.getText());
-                int setVal = radioButton1.isSelected() ? Point.SET_1 : Point.SET_2;
-                renderer.problem.addPoint(x, y, setVal);
+                double centerx = Double.parseDouble(xPointField.getText());
+                double centery = Double.parseDouble(yPointField.getText());
+                double alpha1 = Double.parseDouble(alpha1Field.getText()) * Math.PI/ 180;
+                double alpha2 = Double.parseDouble(alpha2Field.getText()) * Math.PI/ 180;
+                renderer.problem.addAngle(centerx, centery, alpha1, alpha2);
             }
         });
         randomBtn.addActionListener(new ActionListener() {
