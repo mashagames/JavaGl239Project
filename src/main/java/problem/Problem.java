@@ -198,7 +198,7 @@ public class Problem {
      *
      * @param n кол-во углов
      */
-    public void addRandomPoints(int n) {
+    public void addRandomAngles(int n) {
         for (int i = 0; i < n; i++) {
             Angle angle = Angle.getRandomAngle();
             angles.add(angle);

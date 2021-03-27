@@ -38,17 +38,7 @@ public class Angle {
         return new Angle(c, alpha1, alpha2);
     }
 
-    public Angle() {
-/*        c.x = Math.random() * 2 - 1;
-        c.y = Math.random() * 2 - 1;
-        alpha1 = Math.random() * Math.PI * 2;
-        alpha2 = Math.random() * Math.PI / 2 + alpha1;
-        if (alpha2 > 2 * Math.PI) {
-            alpha2 -= 2 * Math.PI;
-        }
-*/    }
-
-    public Angle(Vector2 c, double alpha1, double alpha2) {
+     public Angle(Vector2 c, double alpha1, double alpha2) {
         this.c = c;
         this.alpha1 = alpha1;
         this.alpha2 = alpha2;
