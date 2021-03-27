@@ -1,6 +1,7 @@
 package Gui;
 
 import problem.Problem;
+import problem.Vector2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -90,7 +91,8 @@ public class Form extends JFrame {
                 double centery = Double.parseDouble(yPointField.getText());
                 double alpha1 = Double.parseDouble(alpha1Field.getText()) * Math.PI/ 180;
                 double alpha2 = Double.parseDouble(alpha2Field.getText()) * Math.PI/ 180;
-                renderer.problem.addAngle(centerx, centery, alpha1, alpha2);
+                Vector2 a = new Vector2(centerx, centery);
+                renderer.problem.addAngle(a, alpha1, alpha2);
             }
         });
         randomBtn.addActionListener(new ActionListener() {
