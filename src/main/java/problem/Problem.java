@@ -1,7 +1,7 @@
 package problem;
 
-import problem.Figures.Figures;
-import problem.Figures.Angle;
+import problem.Figures;
+import problem.Angle;
 
 
 import javax.media.opengl.GL2;
