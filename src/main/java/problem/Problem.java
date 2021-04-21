@@ -169,9 +169,9 @@ public class Problem {
                 double alpha1 = sc.nextDouble();
                 double alpha2 = sc.nextDouble();
                 Vector2 a = new Vector2(centerx, centery);
-                sc.nextLine();
                 Angle angle = new Angle(a, alpha1, alpha2);
                 angles.add(angle);
+                sc.nextLine();
             }
         } catch (Exception ex) {
             System.out.println("Ошибка чтения из файла: " + ex);
@@ -284,6 +284,7 @@ public class Problem {
         }
 // Выделение найденых углов
         gl.glLineWidth(3);
+        gl.glColor3d(0.0, 0.0, 1.0);
         if (a1sol!=-1) {
             angles.get(a1sol).render(gl);
         }
